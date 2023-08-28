@@ -1,6 +1,93 @@
 /*TIPS: *No olvides utilizar el almacenamiento local (localStorage)
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
+
+ const itemsArray = localStorage.getItem("items")
+ ? JSON.parse(localStorage.getItem("items"))
+ : []
+
+
+
+// Codigo DOM #1
+document.querySelector('.new-todo').addEventListener('keyup', (event) => {
+  if (
+    event.keyCode === 13 &&
+    document.querySelector('.new-todo').value.length > 0
+  ) {
+    const item = document.querySelector('.new-todo')
+    createItems(item)
+    //Llamar la función que crea la tarea.**
+  }
+})
+
+function displayItems() {
+  let items = ''
+  for (let i = 0; i < itemsArray.length; i++) {
+    items += `    <div class="item">
+                    <div class="input-controller">
+                      <input class="toggle" type="checkbox" id="check_${i}" ${
+      itemsArray[i].checked ? 'checked' : ''
+    } />
+                      <textarea disabled>${itemsArray[i].thing}</textarea>
+                      <div class="edit-controller">
+                        <div>
+                          Prioridad
+                          <select id="priority">
+                            <option ${
+                              itemsArray[i].priority === 'Alta'
+                                ? 'selected'
+                                : ''
+                            }>Alta</option>
+                            <option ${
+                              itemsArray[i].priority === 'Media'
+                                ? 'selected'
+                                : ''
+                            }>Media</option> 
+                            <option ${
+                              itemsArray[i].priority === 'Baja'
+                                ? 'selected'
+                                : ''
+                            }>Baja</option> 
+                          </select>
+                        </div>
+                        <div>
+                          Categorías
+                          <select id="category">
+                              <option ${
+                                itemsArray[i].category === 'Casa'
+                                  ? 'selected'
+                                  : ''
+                              }>Casa</option> 
+                              <option ${
+                                itemsArray[i].category === 'Trabajo'
+                                  ? 'selected'
+                                  : ''
+                              }>Trabajo</option> 
+                              <option ${
+                                itemsArray[i].category === 'Emprendimiento'
+                                  ? 'selected'
+                                  : ''
+                              }>Emprendimiento</option> 
+                            </select>
+                        </div>
+                        <i class="fa-solid fa-pen-to-square editBtn"></i>
+                        <i class="fa-solid fa-x deleteBtn"></i>
+                      </div>
+                    </div>
+                    <div class="update-controller">
+                    <button class="saveBtn">Save</button>
+                     <button class="cancelBtn">Cancel</button>
+                    </div>
+                  </div>`
+  }
+  document.querySelector('.todo-list').innerHTML = items
+  activateCheckboxListeners()
+  activateDeleteListeners()
+  activateEditListeners()
+  activateSaveListeners()
+  activateCancelListeners()
+}
+
 function displayFooter() {
   let page = `      
      
@@ -25,16 +112,6 @@ function displayFooter() {
   document.querySelector('.footer').innerHTML = page
 }
 
-// Codigo DOM #1
-document.querySelector('.new-todo').addEventListener('keyup', (event) => {
-  if (
-    event.keyCode === 13 &&
-    document.querySelector('.new-todo').value.length > 0
-  ) {
-    const item = document.querySelector('.new-todo')
-    //Llamar la función que crea la tarea.**
-  }
-})
 
 
 // Codigo DOM #2
@@ -56,6 +133,7 @@ function activateDeleteListeners() {
   let deleteBtn = document.querySelectorAll('.deleteBtn')
   deleteBtn.forEach((db, i) => {
     db.addEventListener('click', () => {
+      deleteItem(i)
       //Llamar la función que elimina la tarea
     })
   })
