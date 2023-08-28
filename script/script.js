@@ -26,6 +26,15 @@ function displayFooter() {
 }
 
 // Codigo DOM #1
+document.querySelector('.new-todo').addEventListener('keyup', (event) => {
+  if (
+    event.keyCode === 13 &&
+    document.querySelector('.new-todo').value.length > 0
+  ) {
+    const item = document.querySelector('.new-todo')
+    //Llamar la función que crea la tarea.**
+  }
+})
 
 // Codigo DOM #2
 
@@ -34,6 +43,17 @@ function displayFooter() {
 // Codigo DOM #4
 
 // Codigo DOM #5
+// Permite que la acción guardar el nuevo nombre de la tarea cuando decides editar y que impacte el DOM del HTML, acá debes agegar algoritmo de actualizar tarea
+
+function activateSaveListeners() {
+  const saveBtn = document.querySelectorAll('.saveBtn')
+  const inputs = document.querySelectorAll('.input-controller textarea')
+  saveBtn.forEach((sB, i) => {
+    sB.addEventListener('click', () => {
+      // Llamar la función que guarda la actualización la tarea
+    })
+  })
+}
 
 // Codigo DOM #6
 
