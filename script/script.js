@@ -50,6 +50,17 @@ function activateCheckboxListeners() {
 }
 // Codigo DOM #3
 
+// Permite que la acción eliminar impacte el DOM del HTML, acá debes agegar algoritmo de eliminar tarea
+
+function activateDeleteListeners() {
+  let deleteBtn = document.querySelectorAll('.deleteBtn')
+  deleteBtn.forEach((db, i) => {
+    db.addEventListener('click', () => {
+      //Llamar la función que elimina la tarea
+    })
+  })
+}
+
 // Codigo DOM #4
 
 // Permite que la acción editar de las 2 listas desplegables "prioridad" y "categoría" impacte el DOM del HTML cuando cambies de opción, inserta este código tal cual, el reto está en saber en qué parte de tu código debes usarlo.
