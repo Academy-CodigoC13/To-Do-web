@@ -26,10 +26,40 @@ function displayFooter() {
 }
 
 // Codigo DOM #1
+document.querySelector('.new-todo').addEventListener('keyup', (event) => {
+  if (
+    event.keyCode === 13 &&
+    document.querySelector('.new-todo').value.length > 0
+  ) {
+    const item = document.querySelector('.new-todo')
+    //Llamar la función que crea la tarea.**
+  }
+})
+
 
 // Codigo DOM #2
+// este fragmento permite conservar el estado del checkbox (true o false) en el localStorage
 
+function activateCheckboxListeners() {
+  const checkboxes = document.querySelectorAll('.toggle')
+  checkboxes.forEach((ch, i) => {
+    ch.addEventListener('click', () => {
+      itemsArray[i].checked = ch.checked
+      localStorage.setItem('items', JSON.stringify(itemsArray))
+    })
+  })
+}
 // Codigo DOM #3
+// Permite que la acción eliminar impacte el DOM del HTML, acá debes agegar algoritmo de eliminar tarea
+
+function activateDeleteListeners() {
+  let deleteBtn = document.querySelectorAll('.deleteBtn')
+  deleteBtn.forEach((db, i) => {
+    db.addEventListener('click', () => {
+      //Llamar la función que elimina la tarea
+    })
+  })
+}
 
 // Codigo DOM #4
 
