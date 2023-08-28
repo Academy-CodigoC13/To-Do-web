@@ -11,7 +11,16 @@
 // Codigo DOM #4
 
 // Codigo DOM #5
-
+function activateSaveListeners() {
+  const saveBtn = document.querySelectorAll('.saveBtn')
+  const inputs = document.querySelectorAll('.input-controller textarea')
+  saveBtn.forEach((sB, i) => {
+    sB.addEventListener('click', () => {
+      // Llamar la función que guarda la actualización la tarea
+      document.querySelectorAll('.saveBtn')
+    })
+  })
+}
 // Codigo DOM #6
 
 //El sistema debe permitir EDITAR o MODIFICAR una tarea.
