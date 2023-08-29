@@ -2,6 +2,8 @@
 El siguiente código lo podrás usar para renderizar en tu front el footer 
 donde están ubicados los botones de filtro, de tu aplicación
 */
+
+
 function displayFooter() {
   let page = `
 

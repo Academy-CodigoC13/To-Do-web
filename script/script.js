@@ -216,7 +216,14 @@ function borrarItem(i) {
 
 //El sistema debe permitir AGREGAR una o varias tareas tarea.
 function crearItems (item) {
-  
+  const creadoItems = {
+   
+    prioridad:"alta",
+    categoria:"casa",
+  }
+  itemsArray.push(creadoItems)
+  localStorage.setItem('items', JSON.stringify(itemsArray))
+  location.reload()
 }
 //El sistema deber permitir MARCAR una tarea como completada
 
