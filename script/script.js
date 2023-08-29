@@ -210,6 +210,7 @@ function activateCancelListeners() {
 function MODIFICARitem (i) {
   itemsArray[i].thing=text
   localStorage.setItem('items', JSON.stringify(itemsArray))
+  location.reload()
 }
 
 //El sistema debe permitir ELIMINAR una tarea.
