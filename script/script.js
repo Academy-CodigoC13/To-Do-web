@@ -207,6 +207,10 @@ function activateCancelListeners() {
 }
 //El sistema debe permitir EDITAR o MODIFICAR una tarea.
 
+function MODIFICARitem (i) {
+  itemsArray[i].thing=text
+}
+
 //El sistema debe permitir ELIMINAR una tarea.
 function borrarItem(i) {
   itemsArray.splice(i,1)
