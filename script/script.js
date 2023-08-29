@@ -15,7 +15,7 @@ document.querySelector('.new-todo').addEventListener('keyup', (event) => {
     document.querySelector('.new-todo').value.length > 0
   ) {
     const item = document.querySelector('.new-todo')
-    createItems(item)
+    crearItems(item)
     //Llamar la función que crea la tarea.**
   }
 })
@@ -133,7 +133,7 @@ function activateDeleteListeners() {
   let deleteBtn = document.querySelectorAll('.deleteBtn')
   deleteBtn.forEach((db, i) => {
     db.addEventListener('click', () => {
-      deleteItem(i)
+      borrarItem(i)
       //Llamar la función que elimina la tarea
     })
   })
@@ -208,9 +208,16 @@ function activateCancelListeners() {
 //El sistema debe permitir EDITAR o MODIFICAR una tarea.
 
 //El sistema debe permitir ELIMINAR una tarea.
+function borrarItem(i) {
+  itemsArray.splice(i,1)
+  localStorage.setItem('items', JSON.stringify(itemsArray))
+  location.reload()
+}
 
 //El sistema debe permitir AGREGAR una o varias tareas tarea.
-
+function crearItems (item) {
+  
+}
 //El sistema deber permitir MARCAR una tarea como completada
 
 //El sistema debe permitir dar diferentes PRIORIDADES a las tareas
@@ -225,4 +232,5 @@ function activateCancelListeners() {
 
 //Recordar llamar las funciones displayItems() y displayFooter() para mostrar
 //las tareas en pantalla
+displayItems()
 displayFooter()
