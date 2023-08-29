@@ -207,9 +207,10 @@ function activateCancelListeners() {
 }
 //El sistema debe permitir EDITAR o MODIFICAR una tarea.
 
-function MODIFICARitem (i) {
+function MODIFICARitem (text,i) {
   itemsArray[i].thing=text
   localStorage.setItem('items', JSON.stringify(itemsArray))
+  location.reload()
 }
 
 //El sistema debe permitir ELIMINAR una tarea.
