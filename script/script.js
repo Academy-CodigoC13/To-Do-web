@@ -109,6 +109,17 @@ function activateCancelListeners() {
 
 //El sistema debe permitir AGREGAR una o varias tareas tarea.
 
+document.getElementById("text")
+    .addEventListener("keyup", function(e) {
+        if (e.keyCode === 13) {
+            document.getElementById("submit").click();
+        }
+    });
+ 
+document.getElementById("submit").onclick = function() {
+    alert('Agragando tarea');
+}
+
 //El sistema deber permitir MARCAR una tarea como completada
 
 //El sistema debe permitir dar diferentes PRIORIDADES a las tareas
