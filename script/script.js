@@ -1,6 +1,29 @@
 /*TIPS: *No olvides utilizar el almacenamiento local (localStorage)
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
+function displayFooter() {
+  let page = `      
+     
+      <footer class="footer">
+       
+        <span class="todo-count"><strong>${countPend()}</strong> pendiente(s)</span>
+        
+        <ul class="filters">
+          <li>
+            <a onclick="showAll() "class="selected filtro" href="#/">Todos</a>
+          </li>
+          <li>
+            <a onclick="showPend()" class="filtro" href="#/active">Pendientes</a>
+          </li>
+          <li>
+            <a onclick="showComp()" class="filtro" href="#/completed">Completados</a>
+          </li>
+        </ul>
+        <button onclick="borrarCompletados()" id="clear-completed" class="clear-completed">Borrar completados</button>
+      </footer>
+    `
+  document.querySelector('.footer').innerHTML = page
+}
 
 // Codigo DOM #1
 document.querySelector('.new-todo').addEventListener('keyup', (event) => {
@@ -135,3 +158,4 @@ document.getElementById("submit").onclick = function() {
 
 //Recordar llamar las funciones displayItems() y displayFooter() para mostrar
 //las tareas en pantalla
+displayFooter()
