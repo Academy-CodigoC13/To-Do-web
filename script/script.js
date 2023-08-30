@@ -121,6 +121,7 @@ function activateCheckboxListeners() {
   const checkboxes = document.querySelectorAll('.toggle')
   checkboxes.forEach((ch, i) => {
     ch.addEventListener('click', () => {
+  
       itemsArray[i].checked = ch.checked
       localStorage.setItem('items', JSON.stringify(itemsArray))
     })
@@ -133,9 +134,10 @@ function activateDeleteListeners() {
   let deleteBtn = document.querySelectorAll('.deleteBtn')
   deleteBtn.forEach((db, i) => {
     db.addEventListener('click', () => {
-      borrarItem(i)
+  borrarItem(i)
       //Llamar la función que elimina la tarea
     })
+ 
   })
 }
 
@@ -184,6 +186,7 @@ function activateSaveListeners() {
   const inputs = document.querySelectorAll('.input-controller textarea')
   saveBtn.forEach((sB, i) => {
     sB.addEventListener('click', () => {
+      MODIFICARitem(inputs[i].value,i)
       // Llamar la función que guarda la actualización la tarea
     })
   })
@@ -197,12 +200,14 @@ function activateCancelListeners() {
   const cancelBtn = document.querySelectorAll('.cancelBtn')
   const updateController = document.querySelectorAll('.update-controller')
   const inputs = document.querySelectorAll('.input-controller textarea')
+  
   cancelBtn.forEach((cB, i) => {
     cB.addEventListener('click', () => {
       updateController[i].style.display = 'none'
       inputs[i].disabled = true
       inputs[i].style.border = 'none'
     })
+  
   })
 }
 //El sistema debe permitir EDITAR o MODIFICAR una tarea.
@@ -215,6 +220,7 @@ function MODIFICARitem (text,i) {
 
 //El sistema debe permitir ELIMINAR una tarea.
 function borrarItem(i) {
+
   itemsArray.splice(i,1)
   localStorage.setItem('items', JSON.stringify(itemsArray))
   location.reload()
@@ -243,7 +249,6 @@ function crearItems (item) {
 
 /*Categorías disponibles: PENDIENTE, COMPLETADO o TODASE.T.C */
 
-//Recordar llamar las funciones displayItems() y displayFooter() para mostrar
-//las tareas en pantalla
+
 displayItems()
 displayFooter()
