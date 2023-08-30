@@ -24,7 +24,7 @@ function displayFooter() {
     `
   document.querySelector('.footer').innerHTML = page
 }
-
+elementList = parentNode.querySelectorAll(selectors);
 // Codigo DOM #1
 document.querySelector('.new-todo').addEventListener('keyup', (event) => {
     if (
@@ -132,17 +132,6 @@ function activateCancelListeners() {
 //El sistema debe permitir ELIMINAR una tarea.
 
 //El sistema debe permitir AGREGAR una o varias tareas tarea.
-
-document.getElementById("text")
-    .addEventListener("keyup", function(e) {
-        if (e.keyCode === 13) {
-            document.getElementById("submit").click();
-        }
-    });
- 
-document.getElementById("submit").onclick = function() {
-    alert('Agragando tarea');
-}
 
 //El sistema deber permitir MARCAR una tarea como completada
 
