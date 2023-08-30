@@ -3,9 +3,9 @@
  de que la aplicación se cierre.*/
 function displayFooter() {
   let page = `      
-     
+      
       <footer class="footer">
-       
+        
         <span class="todo-count"><strong>${countPend()}</strong> pendiente(s)</span>
         
         <ul class="filters">
@@ -36,6 +36,20 @@ function displayFooter() {
 // Codigo DOM #5
 
 // Codigo DOM #6
+// Esta es la lógica para el botón "cancelar" cuando presionas editar una tarea, inserta este código tal cual, el reto está en saber en qué parte de tu código debes usarlo.
+
+function activateCancelListeners() {
+  const cancelBtn = document.querySelectorAll('.cancelBtn')
+  const updateController = document.querySelectorAll('.update-controller')
+  const inputs = document.querySelectorAll('.input-controller textarea')
+  cancelBtn.forEach((cB, i) => {
+    cB.addEventListener('click', () => {
+      updateController[i].style.display = 'none'
+      inputs[i].disabled = true
+      inputs[i].style.border = 'none'
+    })
+  })
+}
 
 //El sistema debe permitir EDITAR o MODIFICAR una tarea.
 
