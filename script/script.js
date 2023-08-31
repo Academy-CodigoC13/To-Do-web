@@ -1,9 +1,29 @@
-/*TIPS: *No olvides utilizar el almacenamiento local (localStorage)
+/*TIPS: No olvides utilizar el almacenamiento local (localStorage)
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
+ 
+let itemsArray= localStorage.getItem("items") ?JSON.parse(localStorage.getItem ("items")) : []
+
+function crearTarea(nombreTarea) {
+  let objetoTarea = {
+    thing: nombreTarea,
+    chacked: false,
+    priority: "Alta",
+    category: "Casa",
+  };
+  itemsArray.push(objetoTarea);
+  localStorage.setItem("items", JSON.stringify(itemsArray))
+  location.reload()
+}
+
+function countPend() {
+  return 0;
+}
+
+
+
 function displayFooter() {
-  let page = `      
-     
+  let page = `     
       <footer class="footer">
        
         <span class="todo-count"><strong>${countPend()}</strong> pendiente(s)</span>
@@ -20,27 +40,22 @@ function displayFooter() {
           </li>
         </ul>
         <button onclick="borrarCompletados()" id="clear-completed" class="clear-completed">Borrar completados</button>
-      </footer>
-    `
+      </footer>`
   document.querySelector('.footer').innerHTML = page
+  
 }
-elementList = parentNode.querySelectorAll(selectors);
+
 // Codigo DOM #1
+
 document.querySelector('.new-todo').addEventListener('keyup', (event) => {
-    if (
-      event.keyCode === 13 &&
-      document.querySelector('.new-todo').value.length > 0
-    ) {
-      const item = document.querySelector('.new-todo')
-      //Llamar la función que crea la tarea.**
-    }
-  })
-  function agregarTarea(){
-    const tarea = document.querySelector('.new-todo')
-   tarea.push()
-   tarea.value = (agregarTarea)
-   
+  if (
+    event.keyCode === 13 &&
+    document.querySelector('.new-todo').value.length > 0
+  ) {
+    const item = document.querySelector('.new-todo')
+    //Llamar la función que crea la tarea.**
   }
+})
 // Codigo DOM #2
 // este fragmento permite conservar el estado del checkbox (true o false) en el localStorage
 
@@ -90,17 +105,17 @@ function activateEditListeners() {
       })
     })
   
-    prioritySelects.addEventListener('change', (event) => {
-      const selectedIndex = event.target.selectedIndex
-      itemsArray[i].priority = event.target.options[selectedIndex].text
-      localStorage.setItem('items', JSON.stringify(itemsArray))
-    })
+    // prioritySelects.addEventListener('change', (event) => {
+    //   const selectedIndex = event.target.selectedIndex
+    //   itemsArray[i].priority = event.target.options[selectedIndex].text
+    //   localStorage.setItem('items', JSON.stringify(itemsArray))
+    // })
   
-    categorySelects.addEventListener('change', (event) => {
-      const selectedIndex = event.target.selectedIndex
-      itemsArray[i].category = event.target.options[selectedIndex].text
-      localStorage.setItem('items', JSON.stringify(itemsArray))
-    })
+    // categorySelects.addEventListener('change', (event) => {
+    //   const selectedIndex = event.target.selectedIndex
+    //   itemsArray[i].category = event.target.options[selectedIndex].text
+    //   localStorage.setItem('items', JSON.stringify(itemsArray))
+    // })
   }
 // Codigo DOM #5
 //comentario del DOM 5
