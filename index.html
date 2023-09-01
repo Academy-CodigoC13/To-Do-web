@@ -2,15 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
-        <!-- Enlace con el archivo de estilos -->
-        <link rel="stylesheet"
-        href="style.css" />
-        <!-- Enlace con los estilos de los iconos editar y eliminar tarea  -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Enlace con el archivo de estilos -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Enlace con los estilos de los iconos editar y eliminar tarea -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <title>ToDo-App</title>
 </head>
 
@@ -18,15 +15,26 @@
   <section class="todoApp">
     <header class="header">
       <h1>Tareas</h1>
-      <input class="new-todo"
-             placeholder="¿Qué necesita ser hecho?"
-             autofocus />
+      <input class="new-todo" placeholder="¿Qué necesita ser hecho?" autofocus />
     </header>
     <section class="main">
       <ul class="todo-list"></ul>
     </section>
     <section class="footer"></section>
-    <script src="script/script.js"></script>
+  </section>
+  
+  <!-- Enlace con el archivo JavaScript -->
+  <script src="script/script.js"></script>
+  <script>
+    // Llamar a la función para cargar tareas al cargar la página
+    loadTasks();
+  
+    // Llamar a la función para mostrar todas las tareas al cargar la página
+    displayItems();
+  
+    // Llamar a la función para mostrar el pie de página
+    displayFooter();
+  </script>
 </body>
 
 </html>
