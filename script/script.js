@@ -1,7 +1,7 @@
 /*TIPS: *No olvides utilizar el almacenamiento local (localStorage)
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
-function displayFooter() {
+ function displayFooter() {
   let page = `      
      
       <footer class="footer">
@@ -26,6 +26,8 @@ function displayFooter() {
 }
 
 // Codigo DOM #1
+
+console.log("holi")
 
 // Codigo DOM #2
 
