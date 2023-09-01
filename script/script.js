@@ -27,6 +27,8 @@
 
 // Codigo DOM #1
 
+console.log("holi")
+
 // Codigo DOM #2
 
 // Codigo DOM #3
