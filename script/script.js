@@ -1,60 +1,51 @@
-/*TIPS: *No olvides utilizar el almacenamiento local (localStorage)
- para que las tareas queden guardadas en caso
- de que la aplicación se cierre.*/
-function displayFooter() {
-  let page = `      
-     
-      <footer class="footer">
-       
-        <span class="todo-count"><strong>${countPend()}</strong> pendiente(s)</span>
-        
-        <ul class="filters">
-          <li>
-            <a onclick="showAll() "class="selected filtro" href="#/">Todos</a>
-          </li>
-          <li>
-            <a onclick="showPend()" class="filtro" href="#/active">Pendientes</a>
-          </li>
-          <li>
-            <a onclick="showComp()" class="filtro" href="#/completed">Completados</a>
-          </li>
-        </ul>
-        <button onclick="borrarCompletados()" id="clear-completed" class="clear-completed">Borrar completados</button>
-      </footer>
-    `
-  document.querySelector('.footer').innerHTML = page
+let itemsArray = []; // asumiré que este es tu array de tareas.
+
+// Cargar tareas (suponiendo que usas localStorage).
+function loadTasks() {
+  const storedTasks = localStorage.getItem('items');
+  if (storedTasks) {
+    itemsArray = JSON.parse(storedTasks);
+  }
 }
 
-// Codigo DOM #1
+// Mostrar tareas.
+function displayItems() {
+  const taskContainer = document.querySelector('.todo-list');
+  taskContainer.innerHTML = '';
 
-// Codigo DOM #2
+  itemsArray.forEach((task, i) => {
+    const taskElement = document.createElement('li');
+    taskElement.className = 'task';
 
-// Codigo DOM #3
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'toggle';
+    checkbox.checked = task.checked;
 
-// Codigo DOM #4
+    const taskText = document.createElement('span');
+    taskText.textContent = task.text;
 
-// Codigo DOM #5
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'deleteBtn';
+    deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
 
-// Codigo DOM #6
+    taskElement.appendChild(checkbox);
+    taskElement.appendChild(taskText);
+    taskElement.appendChild(deleteButton);
+    taskContainer.appendChild(taskElement);
+  });
 
-//El sistema debe permitir EDITAR o MODIFICAR una tarea.
+  activateCheckboxListeners();
+  activateDeleteListeners();
+}
 
-//El sistema debe permitir ELIMINAR una tarea.
+// Mostrar el pie de página (aquí puedes adaptar lo que desees mostrar).
+function displayFooter() {
+  const footer = document.querySelector('.footer');
+  const taskCount = itemsArray.length;
 
-//El sistema debe permitir AGREGAR una o varias tareas tarea.
+  footer.innerHTML = `${taskCount} tarea${taskCount === 1 ? '' : 's'} pendiente${taskCount === 1 ? '' : 's'}`;
+}
 
-//El sistema deber permitir MARCAR una tarea como completada
 
-//El sistema debe permitir dar diferentes PRIORIDADES a las tareas
-//EJEMPLO:
 
-//Sacar la basura - Prioridad: media
-
-//El sistema debe permitir visualizar tareas por CATEGORÍAS o ETIQUETAS
-//EJEMPLO:
-
-/*Categorías disponibles: PENDIENTE, COMPLETADO o TODASE.T.C */
-
-//Recordar llamar las funciones displayItems() y displayFooter() para mostrar
-//las tareas en pantalla
-displayFooter()
