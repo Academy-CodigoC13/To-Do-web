@@ -261,6 +261,15 @@ function showComp() {
   })
   localStorage.setItem('items', JSON.stringify(itemsArray))
 }
+
+function borrarCompletados() {
+  const completedTasks = itemsArray.filter((item) => item.checked === false)
+
+  localStorage.setItem('items', JSON.stringify(completedTasks))
+  location.reload()
+}
+
+
 //El sistema debe permitir dar diferentes PRIORIDADES a las tareas
 //EJEMPLO:
 
