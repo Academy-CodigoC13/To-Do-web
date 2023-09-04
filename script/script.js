@@ -269,6 +269,16 @@ function borrarCompletados() {
   location.reload()
 }
 
+function showAll(){
+  const all = document.querySelectorAll('.input-controller');
+  all.forEach((element) => {
+    const check = element.querySelector('.toggle');
+    element.style.display = ''
+  })
+
+  localStorage.setItem('items' , JSON.stringify(itemsArray));
+}
+
 
 //El sistema debe permitir dar diferentes PRIORIDADES a las tareas
 //EJEMPLO:
