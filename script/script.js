@@ -1,15 +1,14 @@
 /*TIPS: *No olvides utilizar el almacenamiento local (localStorage)
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
-
  const itemsArray = localStorage.getItem("items")
  ? JSON.parse(localStorage.getItem('items'))
  : []
 
 //El sistema debe permitir AGREGAR una o varias tareas tarea.
-function crearItems (Tareas) {
+function crearItems (Tarea) {
   const creadoItems = {
-   Nombre: Tareas.value,
+   thing: Tarea.value,
    checked: false,
     prioridad:"alta",
     categoria:"casa",
