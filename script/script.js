@@ -3,8 +3,21 @@
  de que la aplicación se cierre.*/
 
  const itemsArray = localStorage.getItem("items")
- ? JSON.parse(localStorage.getItem("items"))
+ ? JSON.parse(localStorage.getItem('items'))
  : []
+
+//El sistema debe permitir AGREGAR una o varias tareas tarea.
+function crearItems (Tareas) {
+  const creadoItems = {
+   Nombre: Tareas.value,
+   checked: false,
+    prioridad:"alta",
+    categoria:"casa",
+  }
+  itemsArray.push(creadoItems)
+  localStorage.setItem('items', JSON.stringify(itemsArray))
+  location.reload();
+}
 
 
 
@@ -178,6 +191,7 @@ function activateEditListeners() {
     localStorage.setItem('items', JSON.stringify(itemsArray))
   })
 }
+
 // Codigo DOM #5
 // Permite que la acción guardar el nuevo nombre de la tarea cuando decides editar y que impacte el DOM del HTML, acá debes agegar algoritmo de actualizar tarea
 
@@ -226,19 +240,28 @@ function borrarItem(i) {
   location.reload()
 }
 
-//El sistema debe permitir AGREGAR una o varias tareas tarea.
-function crearItems (item) {
-  const creadoItems = {
-   
-    prioridad:"alta",
-    categoria:"casa",
-  }
-  itemsArray.push(creadoItems)
-  localStorage.setItem('items', JSON.stringify(itemsArray))
-  location.reload()
-}
-//El sistema deber permitir MARCAR una tarea como completada
+function countPend(){
+  const contadorPendientes= itemsArray.filter((text) => text.checked===false)
 
+  return contadorPendientes.length
+}
+
+
+
+//El sistema deber permitir MARCAR una tarea como completada
+function showComp() {
+  const completados = document.querySelectorAll('.input-controller')
+  completados.forEach((element) => {
+    const check = element.querySelector('.toggle')
+    if (!check.checked) {
+      element.style.display = 'none'
+    }
+    if (check.checked) {
+      element.style.display = ''
+    }
+  })
+  localStorage.setItem('items', JSON.stringify(itemsArray))
+}
 //El sistema debe permitir dar diferentes PRIORIDADES a las tareas
 //EJEMPLO:
 
