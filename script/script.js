@@ -1,8 +1,115 @@
 /*TIPS: *No olvides utilizar el almacenamiento local (localStorage)
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
+ let itemsArray = localStorage.getItem("items") ? JSON.parse (localStorage.getItem("items")):[];
+function crearTarea (nombreTarea) {
+  let objetoTarea = {
+    thing: nombreTarea,
+    checked: false,
+    priority: "Alta",
+    category: "Hogar",
+  };
+
+  itemsArray.push(objetoTarea);
+  localStorage.setItem("items", JSON.stringify(itemsArray));
+  location.reload();
+  console.log(itemsArray)
+}
+
+function borrarTarea(posicion) {
+  itemsArray.splice(posicion, 1);
+  itemsArray = itemsArray.filter((tarea, i)=> i !== posicion && tarea);
+
+  localStorage.setItem("items", JSON.stringify(itemsArray));
+  location.reload();
+}
+
+function actualizarTarea (tarea, posicion){
+  itemsArray[posicion].thing=tarea
+  localStorage.setItem("items", JSON.stringify(itemsArray))
+  location.reload()
+}
+
+function countPend() {
+  const contadorPendientes = itemsArray.filter(
+    (tarea) => tarea.checked===false
+  );
+  return contadorPendientes.length;
+}
+/* 
+El siguiente código lo podrás usar para renderizar en tu front el panel de 
+cada tarea de tu aplicación
+*/
+function displayItems() {
+  let items = ''
+  for (let i = 0; i < itemsArray.length; i++) {
+    items += `    <div class="item">
+                    <div class="input-controller">
+                      <input class="toggle" type="checkbox" id="check_${i}" ${
+      itemsArray[i].checked ? 'checked' : ''
+    } />
+                      <textarea disabled>${itemsArray[i].thing}</textarea>
+                      <div class="edit-controller">
+                        <div>
+                          Prioridad
+                          <select id="priority">
+                            <option ${
+                              itemsArray[i].priority === 'Alta'
+                                ? 'selected'
+                                : ''
+                            }>Alta</option>
+                            <option ${
+                              itemsArray[i].priority === 'Media'
+                                ? 'selected'
+                                : ''
+                            }>Media</option> 
+                            <option ${
+                              itemsArray[i].priority === 'Baja'
+                                ? 'selected'
+                                : ''
+                            }>Baja</option> 
+                          </select>
+                        </div>
+                        <div>
+                          Categorías
+                          <select id="category">
+                              <option ${
+                                itemsArray[i].category === 'Casa'
+                                  ? 'selected'
+                                  : ''
+                              }>Casa</option> 
+                              <option ${
+                                itemsArray[i].category === 'Trabajo'
+                                  ? 'selected'
+                                  : ''
+                              }>Trabajo</option> 
+                              <option ${
+                                itemsArray[i].category === 'Emprendimiento'
+                                  ? 'selected'
+                                  : ''
+                              }>Emprendimiento</option> 
+                            </select>
+                        </div>
+                        <i class="fa-solid fa-pen-to-square editBtn"></i>
+                        <i class="fa-solid fa-x deleteBtn"></i>
+                      </div>
+                    </div>
+                    <div class="update-controller">
+                    <button class="saveBtn">Save</button>
+                     <button class="cancelBtn">Cancel</button>
+                    </div>
+                  </div>`
+  }
+  document.querySelector('.todo-list').innerHTML = items
+  activateCheckboxListeners()
+  activateDeleteListeners()
+  activateEditListeners()
+  activateSaveListeners()
+  activateCancelListeners()
+}
+
 function displayFooter() {
-  let page = `      
+  let page = `
      
       <footer class="footer">
        
@@ -33,6 +140,8 @@ document.querySelector('.new-todo').addEventListener('keyup', (event) => {
   ) {
     const item = document.querySelector('.new-todo')
     //Llamar la función que crea la tarea.**
+    // console.log(item.value);
+    crearTarea(item.value);
   }
 })
 
@@ -45,8 +154,9 @@ function activateCheckboxListeners() {
     ch.addEventListener('click', () => {
       itemsArray[i].checked = ch.checked
       localStorage.setItem('items', JSON.stringify(itemsArray))
-    })
-  })
+      location.reload
+    });
+  });
 }
 // Codigo DOM #3
 
@@ -57,6 +167,7 @@ function activateDeleteListeners() {
   deleteBtn.forEach((db, i) => {
     db.addEventListener('click', () => {
       //Llamar la función que elimina la tarea
+      borrarTarea(i);
     })
   })
 }
@@ -71,15 +182,16 @@ function activateEditListeners() {
   const inputs = document.querySelectorAll('.input-controller textarea')
   const prioritySelects = document.querySelectorAll(
     '.edit-controller select'
-  )[0]
+  )[0];
   const categorySelects = document.querySelectorAll(
     '.edit-controller select'
-  )[1]
+  )[1];
 
   editBtn.forEach((eb, i) => {
     eb.addEventListener('click', () => {
-      updateController[i].style.display = 'block'
-      inputs[i].disabled = false
+      updateController[i].style.display = 'block';
+      inputs[i].disabled = false;
+      inputs[i].style.background = "#d1d1d1"
 
       prioritySelects.value = itemsArray[i].priority
       categorySelects.value = itemsArray[i].category
@@ -147,3 +259,4 @@ function activateCancelListeners() {
 //Recordar llamar las funciones displayItems() y displayFooter() para mostrar
 //las tareas en pantalla
 displayFooter()
+displayItems()
