@@ -40,7 +40,7 @@ button {
 body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   line-height: 1.4em;
-  background: url(img/d573e90bb82438ebd18d836eab9f96fd.jpg);
+  background: url(img/f55bc7aac8c9d893810b47a25236e2d4.jpg);
   color: #ffffff;
   min-width: 230px;
   max-width: 550px;
@@ -57,7 +57,7 @@ body {
 
 .todoApp {
   background: #000000;
-  background: url(img/d573e90bb82438ebd18d836eab9f96fd.jpg);
+  background: url(img/f55bc7aac8c9d893810b47a25236e2d4.jpg);
   margin: 130px 0 30px 0;
   position: relative;
   box-shadow: 0 2px 4px 0 rgb(0, 0, 0), 0 25px 50px 0 rgb(255, 255, 255);
@@ -72,7 +72,7 @@ body {
 .todoApp input::-moz-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: rgb(223, 15, 171);
+  color: rgb(251, 251, 251);
 }
 
 .todoApp input::input-placeholder {
