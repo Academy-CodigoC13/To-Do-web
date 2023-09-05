@@ -2,6 +2,23 @@ html,
 body {
   margin: 0;
   padding: 0;
+
+}
+
+#watch {
+  display: grid;
+  place-items: center;
+  align-items: center;
+  margin: auto;
+  overflow: hidden;
+  background: url(img/f55bc7aac8c9d893810b47a25236e2d4.jpg);
+  width: 200px;
+  height: 200px;
+  color: rgb(255, 255, 255);
+  
+border-width: 6px;
+  font-family: monospace;
+  font-size: 2.7rem;
 }
 
 button {
@@ -21,16 +38,17 @@ button {
 }
 
 body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   line-height: 1.4em;
-  background: #0a0a0a;
-  color: #0a0a0a;
+  background: url(img/d573e90bb82438ebd18d836eab9f96fd.jpg);
+  color: #ffffff;
   min-width: 230px;
   max-width: 550px;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 300;
+  
 }
 
 :focus {
@@ -38,38 +56,39 @@ body {
 }
 
 .todoApp {
-  background: #fff;
-  margin: 130px 0 40px 0;
+  background: #000000;
+  background: url(img/d573e90bb82438ebd18d836eab9f96fd.jpg);
+  margin: 130px 0 30px 0;
   position: relative;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px 0 rgb(0, 0, 0), 0 25px 50px 0 rgb(255, 255, 255);
 }
 
 .todoApp input::-webkit-input-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.4);
+  color: rgb(255, 255, 255);
 }
 
 .todoApp input::-moz-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.4);
+  color: rgb(223, 15, 171);
 }
 
 .todoApp input::input-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.4);
+  color: rgb(255, 255, 255);
 }
 
 .todoApp h1 {
   position: absolute;
   top: -140px;
   width: 100%;
-  font-size: 80px;
+  font-size: 65px;
   font-weight: 200;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
   -webkit-text-rendering: optimizeLegibility;
   -moz-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
@@ -86,8 +105,8 @@ body {
   line-height: 1.4em;
   color: inherit;
   padding: 6px;
-  border: 1px solid #fff;
-  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #ff0505;
+  box-shadow: inset 0 -1px 5px 0 rgb(83, 70, 70);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -96,14 +115,14 @@ body {
 .new-todo {
   padding: 16px 16px 16px 60px;
   border: none;
-  background: rgba(0, 0, 0, 0.003);
-  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  background: rgb(0, 0, 0);
+  box-shadow: inset 0 -2px 1px rgb(255, 255, 255);
 }
 
 .main {
   position: relative;
   z-index: 2;
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid #ffffff;
 }
 
 .todo-list {
@@ -115,7 +134,7 @@ body {
 .todo-list li {
   position: relative;
   font-size: 24px;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid #1cf000;
 }
 
 .todo-list li:last-child {
@@ -173,11 +192,11 @@ body {
   line-height: 1.2;
   transition: color 0.4s;
   font-weight: 400;
-  color: #0a0a0a;
+  color: #ff0000;
 }
 
 .todo-list li.completed label {
-  color: #cdcdcd;
+  color: #ffd900;
   text-decoration: line-through;
 }
 
@@ -191,13 +210,14 @@ body {
   height: 40px;
   margin: auto 0;
   font-size: 30px;
-  color: #cc9a9a;
+  color: #000000;
   margin-bottom: 11px;
   transition: color 0.2s ease-out;
 }
 
+
 .todo-list li .destroy:hover {
-  color: #af5b5e;
+  color: #ff004c;
 }
 
 .todo-list li .destroy:after {
@@ -221,7 +241,7 @@ body {
   height: 20px;
   text-align: center;
   font-size: 15px;
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid #ffffff;
 }
 
 .footer:before {
@@ -232,9 +252,9 @@ body {
   left: 0;
   height: 50px;
   overflow: hidden;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
-    0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
-    0 17px 2px -6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px rgb(0, 0, 0), 0 8px 0 -3px #000000,
+    0 9px 1px -3px rgb(0, 0, 0), 0 16px 0 -6px #000000,
+    0 17px 2px -6px rgb(0, 0, 0);
 }
 
 .todo-count {
@@ -270,11 +290,11 @@ body {
 }
 
 .filters li a:hover {
-  border-color: rgba(175, 47, 47, 0.1);
+  border-color: rgb(255, 255, 255);
 }
 
 .filters li a.selected {
-  border-color: rgba(175, 47, 47, 0.2);
+  border-color: rgb(255, 255, 255);
 }
 
 .clear-completed,
@@ -322,7 +342,7 @@ html .clear-completed:active {
 }
 
 .to-do-list .fa-pen-to-square {
-  color: #af5b5e;
+  color: #d0ff00;
 }
 .input-controller textarea {
   width: 100%;
@@ -330,7 +350,7 @@ html .clear-completed:active {
   border: none;
   resize: none;
   line-height: 1.4;
-  color: black;
+  color: rgb(255, 255, 255);
   border-radius: 10px;
   background-color: transparent;
   font-size: 1.2rem;
@@ -339,7 +359,7 @@ html .clear-completed:active {
 }
 
 textarea:focus {
-  box-shadow: 0 0 5px white;
+  box-shadow: 0 0 5px rgb(0, 126, 38);
 }
 
 .edit-controller {
@@ -380,10 +400,10 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgb(0, 0, 0);
   border-radius: 10px;
   padding: 8px;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 4px 0px rgb(255, 255, 255);
 }
 
 .input-controller {
@@ -392,7 +412,7 @@ textarea:focus {
 }
 
 textarea:focus {
-  box-shadow: 0 0 5px white;
+  box-shadow: 0 0 5px rgb(226, 68, 68);
 }
 .edit-controller {
   display: flex;
