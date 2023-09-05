@@ -5,6 +5,7 @@
  ? JSON.parse(localStorage.getItem('items'))
  : []
 
+
 //El sistema debe permitir AGREGAR una o varias tareas tarea.
 function crearItems (Tarea) {
   const creadoItems = {
@@ -13,12 +14,29 @@ function crearItems (Tarea) {
     prioridad:"alta",
     categoria:"casa",
   }
+
   itemsArray.push(creadoItems)
   localStorage.setItem('items', JSON.stringify(itemsArray))
   location.reload();
 }
 
 
+function correTiempo() {
+  let date = new Date()
+  let hh = date.getHours()
+  let mm = date.getMinutes()
+  let ss = date.getSeconds()
+
+ hh = (hh < 10) ? "0" + hh : hh
+ mm = (mm < 10) ? "0" + mm : mm
+ ss = (ss < 10) ? "0" + ss : ss
+
+ let time = hh + ":" + mm + ":" + ss;
+ let watch = document.querySelector('#watch')
+ watch.innerHTML = time
+}
+
+setInterval(correTiempo,1000);
 
 // Codigo DOM #1
 document.querySelector('.new-todo').addEventListener('keyup', (event) => {
@@ -31,6 +49,7 @@ document.querySelector('.new-todo').addEventListener('keyup', (event) => {
     //Llamar la función que crea la tarea.**
   }
 })
+
 
 function displayItems() {
   let items = ''
@@ -153,6 +172,13 @@ function activateDeleteListeners() {
   })
 }
 
+function borrarItem(i) {
+
+  itemsArray.splice(i,1)
+  localStorage.setItem('items', JSON.stringify(itemsArray))
+  location.reload()
+}
+
 // Codigo DOM #4
 
 // Permite que la acción editar de las 2 listas desplegables "prioridad" y "categoría" impacte el DOM del HTML cuando cambies de opción, inserta este código tal cual, el reto está en saber en qué parte de tu código debes usarlo.
@@ -200,9 +226,15 @@ function activateSaveListeners() {
   saveBtn.forEach((sB, i) => {
     sB.addEventListener('click', () => {
       MODIFICARitem(inputs[i].value,i)
-      // Llamar la función que guarda la actualización la tarea
+      // Llamar la función que guarda la actualización tarea
     })
   })
+}
+
+function MODIFICARitem (text,i) {
+  itemsArray[i].thing=text
+  localStorage.setItem('items', JSON.stringify(itemsArray))
+  location.reload()
 }
 
 
@@ -223,21 +255,7 @@ function activateCancelListeners() {
   
   })
 }
-//El sistema debe permitir EDITAR o MODIFICAR una tarea.
 
-function MODIFICARitem (text,i) {
-  itemsArray[i].thing=text
-  localStorage.setItem('items', JSON.stringify(itemsArray))
-  location.reload()
-}
-
-//El sistema debe permitir ELIMINAR una tarea.
-function borrarItem(i) {
-
-  itemsArray.splice(i,1)
-  localStorage.setItem('items', JSON.stringify(itemsArray))
-  location.reload()
-}
 
 function countPend(){
   const contadorPendientes= itemsArray.filter((text) => text.checked===false)
@@ -293,6 +311,11 @@ function showPend() {
   localStorage.setItem('items', JSON.stringify(itemsArray))
 }
 
+
+
+displayItems()
+displayFooter()
+
 //El sistema debe permitir dar diferentes PRIORIDADES a las tareas
 //EJEMPLO:
 
@@ -304,5 +327,3 @@ function showPend() {
 /*Categorías disponibles: PENDIENTE, COMPLETADO o TODASE.T.C */
 
 
-displayItems()
-displayFooter()
