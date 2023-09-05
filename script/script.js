@@ -45,7 +45,7 @@ function displayItems() {
   for (let i = 0; i < itemsArray.length; i++) {
     items += `    <div class="item">
                     <div class="input-controller">
-                      <input class="toggle" type="checkbox" id="check_${i}" ${
+                      <input class="toogle" type="checkbox" id="check_${i}" ${
       itemsArray[i].checked ? 'checked' : ''
     } />
                       <textarea disabled>${itemsArray[i].thing}</textarea>
@@ -84,10 +84,10 @@ function displayItems() {
                                   : ''
                               }>Trabajo</option> 
                               <option ${
-                                itemsArray[i].category === 'Emprendimiento'
+                                itemsArray[i].category === 'Estilo de vida'
                                   ? 'selected'
                                   : ''
-                              }>Emprendimiento</option> 
+                              }>Estilo de vida</option> 
                             </select>
                         </div>
                         <i class="fa-solid fa-pen-to-square editBtn"></i>
@@ -191,7 +191,7 @@ function activateEditListeners() {
     eb.addEventListener('click', () => {
       updateController[i].style.display = 'block';
       inputs[i].disabled = false;
-      inputs[i].style.background = "#d1d1d1"
+      inputs[i].style.background = "blue"
 
       prioritySelects.value = itemsArray[i].priority
       categorySelects.value = itemsArray[i].category
@@ -219,6 +219,7 @@ function activateSaveListeners() {
   saveBtn.forEach((sB, i) => {
     sB.addEventListener('click', () => {
       // Llamar la función que guarda la actualización la tarea
+      actualizarTarea(inputs[i].value, i);
     })
   })
 }
