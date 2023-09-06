@@ -19,9 +19,11 @@ function displayFooter() {
           <li>
             <a class="filtro" href="#/completed">Completados</a>
           </li>
+          <li>
+          <a class="filtro" href="#/completed">Borrar Completados</a>
+        </li>
         </ul>
-        <button class="clear-completed">Borrar completados</button>
+        <button class="clear-completed" style="background-color: #007bff; color: #fff;">Borrar completados</button>
       </footer>
-    `
-  document.querySelector('.footer').innerHTML = page
+  document.querySelector('.footer').innerHTML = page`
 }
