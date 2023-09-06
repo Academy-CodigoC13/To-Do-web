@@ -18,7 +18,10 @@ button {
   appearance: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FB2C00; color: #fff;
+  border: 2px solid #ff0000;
 }
+
 
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -261,12 +264,21 @@ body {
 }
 
 .filters li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
   color: inherit;
-  margin: 3px;
-  padding: 3px 7px;
-  text-decoration: none;
-  border: 1px solid transparent;
-  border-radius: 3px;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FB2C00; color: #fff;
+  border: 2px solid #ff0000;
 }
 
 .filters li a:hover {
