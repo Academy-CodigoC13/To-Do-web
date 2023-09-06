@@ -1,0 +1,158 @@
+[33mcommit 99b1437680941d1ce94335824a625b5e78d3a748[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 3f0a96b 9f106e3
+Author: HRHJuggernot <138121013+HRHJuggernot@users.noreply.github.com>
+Date:   Tue Sep 5 09:23:11 2023 -0500
+
+    Merge pull request #5 from HRHJuggernot/JCARPbranch
+    
+    Puliendo 5/09/2023
+
+[33mcommit 9f106e3af4008de3fda8541e84ed2b1bb4f75592[m[33m ([m[1;31morigin/JCARPbranch[m[33m)[m
+Author: HRHJuggernot <juan.p98@live.com>
+Date:   Tue Sep 5 09:19:32 2023 -0500
+
+    Puliendo 5/09/2023
+
+[33mcommit 3f0a96b380e505c11286afc994872d233fa6be17[m
+Author: HRHJuggernot <juan.p98@live.com>
+Date:   Mon Sep 4 10:23:02 2023 -0500
+
+    Añadiendo las funcionalidades
+
+[33mcommit f31dbfb14f132d343f7f969426514b3997a56ce5[m
+Merge: 593f35f c4bb3b5
+Author: HRHJuggernot <138121013+HRHJuggernot@users.noreply.github.com>
+Date:   Mon Aug 28 09:55:27 2023 -0500
+
+    Merge pull request #4 from HRHJuggernot/Dev/Machado
+    
+    agg DOM #3
+
+[33mcommit 593f35f8010dc7633442f63664dfb76a15129f4e[m
+Merge: 770b719 07ae368
+Author: HRHJuggernot <138121013+HRHJuggernot@users.noreply.github.com>
+Date:   Mon Aug 28 09:50:40 2023 -0500
+
+    Merge pull request #3 from HRHJuggernot/dev/JuanZapata
+    
+    agregando el dom4
+
+[33mcommit 770b7193bb15fd7de8a3a4c6a18f79e52d3594d2[m
+Merge: f71719a 7ee2a8e
+Author: HRHJuggernot <138121013+HRHJuggernot@users.noreply.github.com>
+Date:   Mon Aug 28 09:39:29 2023 -0500
+
+    Merge pull request #2 from HRHJuggernot/dev/Herrera
+    
+    Agregando el DOM 2 & 6
+
+[33mcommit 07ae36838ece484cba991a7a217cbc5215e1acd9[m[33m ([m[1;31morigin/dev/JuanZapata[m[33m)[m
+Author: jjzapata2002 <jjzapata2002@gmail.com>
+Date:   Mon Aug 28 09:27:05 2023 -0500
+
+    agregando el dom4
+
+[33mcommit 7ee2a8ee4af191baab15cc73f8aca23596820a8d[m
+Author: felipeherrerapere03 <felipeherrerapere03@gmail.com>
+Date:   Mon Aug 28 09:26:21 2023 -0500
+
+    Agregando el DOM 2 & 6
+
+[33mcommit c4bb3b5364211fb02b13f51e66acd8a8492bd8c5[m[33m ([m[1;31morigin/Dev/Machado[m[33m)[m
+Author: machadoalejo <machadoalejo@gmail.com>
+Date:   Mon Aug 28 09:25:11 2023 -0500
+
+    agg DOM #3
+
+[33mcommit f71719ac1b489c3988eac0593ca7efb4ea309f31[m
+Merge: 5ffc171 23a8082
+Author: HRHJuggernot <138121013+HRHJuggernot@users.noreply.github.com>
+Date:   Mon Aug 28 09:18:08 2023 -0500
+
+    Merge pull request #1 from HRHJuggernot/JCARPbranch
+    
+    Agregando DOMs
+
+[33mcommit 23a8082ec30fb9ddab266117e222cf31360756f0[m
+Author: HRHJuggernot <juan.p98@live.com>
+Date:   Mon Aug 28 09:15:59 2023 -0500
+
+    Agregando DOMs
+
+[33mcommit 5ffc1711cd5946246853ab2876d564abc094a89d[m
+Author: Lina Beltrán <lmbd92@hotmail.com>
+Date:   Thu Aug 17 18:29:04 2023 -0500
+
+    Update README.md
+
+[33mcommit a6243e5f48cd0c57f050383f4e99231111d9cd01[m
+Author: AcademyCodigoC13 <escuela@codigoc13.com>
+Date:   Thu Aug 17 16:31:08 2023 -0500
+
+    Demo
+
+[33mcommit 4c9785293da0f6be20d89a809b0ed8540f3b8d93[m
+Author: Lina Beltrán <lmbd92@hotmail.com>
+Date:   Thu Aug 17 15:02:41 2023 -0500
+
+    updating readme
+
+[33mcommit 0c9473e3df33a64c5a9f90baa41f9a173c392db2[m
+Author: AcademyCodigoC13 <escuela@codigoc13.com>
+Date:   Thu Aug 17 13:21:03 2023 -0500
+
+    fix bug
+
+[33mcommit ae27170bce79b5d99c6599ac2767bceed31c6e2d[m
+Author: AcademyCodigoC13 <escuela@codigoc13.com>
+Date:   Tue Aug 15 16:25:30 2023 -0500
+
+    DOM-tareas
+
+[33mcommit ac891816873d1542a408606110571437f9511330[m
+Author: AcademyCodigoC13 <escuela@codigoc13.com>
+Date:   Tue Aug 15 16:25:11 2023 -0500
+
+    DOM-inferior
+
+[33mcommit a27bd020bbedadb788b00af303b86b7f21354139[m
+Author: AcademyCodigoC13 <escuela@codigoc13.com>
+Date:   Tue Aug 15 16:24:36 2023 -0500
+
+    Esqueleto
+
+[33mcommit b2fb746b90f95c21a4f79f42ab3b13bd4248dec6[m
+Author: AcademyCodigoC13 <escuela@codigoc13.com>
+Date:   Tue Aug 15 16:24:16 2023 -0500
+
+    Index
+
+[33mcommit 5fabdf5f282eeda81081e4f2f7e5d9a15bb933be[m
+Author: AcademyCodigoC13 <escuela@codigoc13.com>
+Date:   Tue Aug 15 16:24:01 2023 -0500
+
+    Estilos
+
+[33mcommit 4cd955b0270bc67dcfc1aa9b7957a87b0fdd6f21[m
+Author: AcademyCodigoC13 <escuela@codigoc13.com>
+Date:   Tue Aug 15 16:23:45 2023 -0500
+
+    readme
+
+[33mcommit bda3e05ba633c78ca784cd4887052ee738a23823[m
+Author: Juanchos2905 <juanchos2905@gmail.com>
+Date:   Tue Aug 15 13:52:42 2023 -0500
+
+    .
+
+[33mcommit 5640d26ba57aa1d5252a33976edce1ebc68b7cdb[m
+Author: Juanchos2905 <juanchos2905@gmail.com>
+Date:   Thu Aug 10 17:27:40 2023 -0500
+
+    v1
+
+[33mcommit 9a823d10420c0fd475ffaeff2352b1dee999e3e8[m
+Author: AcademyCodigoC13 <141966212+AcademyCodigoC13@users.noreply.github.com>
+Date:   Thu Aug 10 16:49:52 2023 -0500
+
+    Initial commit
