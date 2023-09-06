@@ -10,12 +10,11 @@ function loadTasks() {
   }
 }
 
-// Función para guardar tareas en el almacenamiento local
+// Función para guardar las tareas en el almacenamiento local
 function saveTasks() {
   localStorage.setItem('items', JSON.stringify(itemsArray));
 }
 
-// Función para crear una nueva tarea
 function createTask(taskText) {
   itemsArray.push({
     text: taskText,
@@ -28,7 +27,12 @@ function createTask(taskText) {
   displayFooter();
 }
 
-// Función para eliminar una tarea
+function editTask(index, newText) {
+  itemsArray[index].text = newText;
+  saveTasks();
+  displayItems();
+}
+
 function deleteTask(index) {
   itemsArray.splice(index, 1);
   saveTasks();
@@ -36,143 +40,50 @@ function deleteTask(index) {
   displayFooter();
 }
 
-// Función para guardar la actualización de una tarea
-function saveTaskUpdate(index, newText) {
-  itemsArray[index].text = newText;
+function clearCompletedTasks() {
+  itemsArray = itemsArray.filter((item) => !item.checked);
   saveTasks();
+  displayItems();
+  displayFooter();
 }
 
-// Función para mostrar las tareas en la lista
-function displayItems() {
-  const todoList = document.querySelector('.todo-list');
-  todoList.innerHTML = '';
-
-  itemsArray.forEach((item, i) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <div class="view">
-        <input class="toggle" type="checkbox" ${item.checked ? 'checked' : ''}>
-        <label>${item.text}</label>
-        <button class="deleteBtn"><i class="fas fa-trash"></i> Eliminar</button>
-        <button class="editBtn"><i class="fas fa-edit"></i> Editar</button>
-      </div>
-      <div class="update-controller">
-        <textarea class="input-controller" disabled>${item.text}</textarea>
-        <button class="saveBtn">Guardar</button>
-        <button class="cancelBtn">Cancelar</button>
-      </div>
-    `;
-
-    // Agregar eventos para marcar como completada
-    const toggleCheckbox = li.querySelector('.toggle');
-    toggleCheckbox.addEventListener('change', () => {
-      itemsArray[i].checked = toggleCheckbox.checked;
-      saveTasks();
-    });
-
-    // Agregar eventos para editar
-    const editBtn = li.querySelector('.editBtn');
-    const inputController = li.querySelector('.input-controller');
-    const saveBtn = li.querySelector('.saveBtn');
-    const cancelBtn = li.querySelector('.cancelBtn');
-    const updateController = li.querySelector('.update-controller');
-
-    editBtn.addEventListener('click', () => {
-      inputController.disabled = false;
-      updateController.style.display = 'block';
-    });
-
-    saveBtn.addEventListener('click', () => {
-      saveTaskUpdate(i, inputController.value);
-      inputController.disabled = true;
-      updateController.style.display = 'none';
-    });
-
-    cancelBtn.addEventListener('click', () => {
-      inputController.value = item.text;
-      inputController.disabled = true;
-      updateController.style.display = 'none';
-    });
-
-    // Agregar eventos para eliminar
-    const deleteBtn = li.querySelector('.deleteBtn');
-    deleteBtn.addEventListener('click', () => {
-      deleteTask(i);
-    });
-
-    todoList.appendChild(li);
-  });
-
-  // Llamar a las funciones para activar los oyentes de eventos
-  activateCheckboxListeners();
-  activateDeleteListeners();
-  activateEditListeners();
-  activateSaveListeners();
-  activateCancelListeners();
+function showAllTasks() {
+  displayItems();
 }
 
-// Función para activar oyentes de eventos en las casillas de verificación
-function activateCheckboxListeners() {
-  const checkboxes = document.querySelectorAll('.toggle');
-  checkboxes.forEach((ch, i) => {
-    ch.addEventListener('change', () => {
-      itemsArray[i].checked = ch.checked;
-      saveTasks();
-      displayFooter();
-    });
-  });
+function showPendingTasks() {
+  const pendingTasks = itemsArray.filter((item) => !item.checked);
+  displayItems(pendingTasks);
 }
 
-// Función para activar oyentes de eventos en los botones de eliminar tarea
-function activateDeleteListeners() {
-  const deleteBtns = document.querySelectorAll('.deleteBtn');
-  deleteBtns.forEach((deleteBtn, i) => {
-    deleteBtn.addEventListener('click', () => {
-      deleteTask(i);
-    });
-  });
+function showCompletedTasks() {
+  const completedTasks = itemsArray.filter((item) => item.checked);
+  displayItems(completedTasks);
 }
 
-// Función para activar oyentes de eventos en los botones de editar tarea
-function activateEditListeners() {
-  const editBtns = document.querySelectorAll('.editBtn');
-  editBtns.forEach((editBtn, i) => {
-    editBtn.addEventListener('click', () => {
-      const inputController = document.querySelectorAll('.input-controller')[i];
-      inputController.disabled = false;
-      const updateController = document.querySelectorAll('.update-controller')[i];
-      updateController.style.display = 'block';
-    });
-  });
+function toggleTaskCompletion(index) {
+  itemsArray[index].checked = !itemsArray[index].checked;
+  saveTasks();
+  displayFooter();
 }
 
-// Función para activar oyentes de eventos en los botones de guardar tarea editada
-function activateSaveListeners() {
-  const saveBtns = document.querySelectorAll('.saveBtn');
-  saveBtns.forEach((saveBtn, i) => {
-    saveBtn.addEventListener('click', () => {
-      const inputController = document.querySelectorAll('.input-controller')[i];
-      const updateController = document.querySelectorAll('.update-controller')[i];
-      saveTaskUpdate(i, inputController.value);
-      inputController.disabled = true;
-      updateController.style.display = 'none';
-    });
-  });
-}
+// Resto del código para mostrar tareas y el pie de página
 
-// Función para activar oyentes de eventos en los botones de cancelar edición
-function activateCancelListeners() {
-  const cancelBtns = document.querySelectorAll('.cancelBtn');
-  cancelBtns.forEach((cancelBtn, i) => {
-    cancelBtn.addEventListener('click', () => {
-      const inputController = document.querySelectorAll('.input-controller')[i];
-      const updateController = document.querySelectorAll('.update-controller')[i];
-      inputController.value = itemsArray[i].text;
-      inputController.disabled = true;
-      updateController.style.display = 'none';
-    });
-  });
-}
+// Llamar a las funciones para activar los oyentes de eventos después de cargar y mostrar las tareas
+document.addEventListener('DOMContentLoaded', () => {
+  loadTasks();
+  displayItems();
+  displayFooter();
+});
+
+// Agregar evento al campo de entrada para crear tareas
+document.querySelector('.new-todo').addEventListener('keyup', (event) => {
+  if (event.keyCode === 13 && document.querySelector('.new-todo').value.length > 0) {
+    const item = document.querySelector('.new-todo').value;
+    createTask(item);
+    document.querySelector('.new-todo').value = '';
+  }
+});
 
 // Función para mostrar el pie de página con estadísticas
 function displayFooter() {
@@ -195,10 +106,7 @@ function displayFooter() {
 
     // Agregar evento al botón "Borrar Completadas"
     clearCompletedBtn.addEventListener('click', () => {
-      itemsArray = itemsArray.filter((item) => !item.checked);
-      saveTasks();
-      displayItems();
-      displayFooter();
+      clearCompletedTasks();
     });
 
     // Agregar evento a los botones de filtro
@@ -207,7 +115,13 @@ function displayFooter() {
       filterButton.addEventListener('click', (event) => {
         event.preventDefault();
         const filter = event.target.getAttribute('data-filter');
-        filterTasks(filter);
+        if (filter === 'all') {
+          showAllTasks();
+        } else if (filter === 'active') {
+          showPendingTasks();
+        } else if (filter === 'completed') {
+          showCompletedTasks();
+        }
       });
     });
   } else {
@@ -215,76 +129,56 @@ function displayFooter() {
   }
 }
 
-// Filtrar y mostrar tareas según el filtro seleccionado
-function filterTasks(filter) {
+// Función para mostrar las tareas en la lista
+function displayItems(filteredItems = itemsArray) {
   const todoList = document.querySelector('.todo-list');
   todoList.innerHTML = '';
+  filteredItems.forEach((item, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div class="view">
+        <input class="toggle" type="checkbox" ${item.checked ? 'checked' : ''}>
+        <label>${item.text}</label>
+        <button class="deleteBtn"><i class="fas fa-trash"></i> Eliminar</button>
+        <button class="editBtn"><i class="fas fa-edit"></i> Editar</button>
+      </div>
+      <div class="update-controller">
+        <textarea class="input-controller" disabled>${item.text}</textarea>
+        <button class="saveBtn">Guardar</button>
+        <button class="cancelBtn">Cancelar</button>
+      </div>
+    `;
+    // Agregar eventos para marcar como completada
+    const toggleCheckbox = li.querySelector('.toggle');
+    toggleCheckbox.addEventListener('change', () => {
+      toggleTaskCompletion(i);
+    });
+    // Agregar eventos para editar
+    const editBtn = li.querySelector('.editBtn');
+    const inputController = li.querySelector('.input-controller');
+    const saveBtn = li.querySelector('.saveBtn');
+    const cancelBtn = li.querySelector('.cancelBtn');
+    const updateController = li.querySelector('.update-controller');
+    editBtn.addEventListener('click', () => {
+      inputController.disabled = false;
+      updateController.style.display = 'block';
+    });
+    saveBtn.addEventListener('click', () => {
+      editTask(i, inputController.value);
+      inputController.disabled = true;
+      updateController.style.display = 'none';
+    });
+    cancelBtn.addEventListener('click', () => {
+      inputController.value = item.text;
+      inputController.disabled = true;
+      updateController.style.display = 'none';
+    });
+    // Agregar eventos para eliminar
+    const deleteBtn = li.querySelector('.deleteBtn');
+    deleteBtn.addEventListener('click', () => {
+      deleteTask(i);
+    });
 
-  itemsArray.forEach((item, i) => {
-    if (filter === 'all' || (filter === 'active' && !item.checked) || (filter === 'completed' && item.checked)) {
-      const li = document.createElement('li');
-      li.innerHTML = `
-        <div class="view">
-          <input class="toggle" type="checkbox" ${item.checked ? 'checked' : ''}>
-          <label>${item.text}</label>
-          <button class="deleteBtn"><i class="fas fa-trash"></i> Eliminar</button>
-          <button class="editBtn"><i class="fas fa-edit"></i> Editar</button>
-        </div>
-        <div class="update-controller">
-          <textarea class="input-controller" disabled>${item.text}</textarea>
-          <button class="saveBtn">Guardar</button>
-          <button class="cancelBtn">Cancelar</button>
-        </div>
-      `;
-
-      // Agregar eventos para marcar como completada
-      const toggleCheckbox = li.querySelector('.toggle');
-      toggleCheckbox.addEventListener('change', () => {
-        itemsArray[i].checked = toggleCheckbox.checked;
-        saveTasks();
-        displayFooter();
-      });
-
-      // Agregar eventos para editar
-      const editBtn = li.querySelector('.editBtn');
-      editBtn.addEventListener('click', () => {
-        const inputController = document.querySelectorAll('.input-controller')[i];
-        inputController.disabled = false;
-        const updateController = document.querySelectorAll('.update-controller')[i];
-        updateController.style.display = 'block';
-      });
-
-      // Agregar eventos para eliminar
-      const deleteBtn = li.querySelector('.deleteBtn');
-      deleteBtn.addEventListener('click', () => {
-        deleteTask(i);
-      });
-
-      todoList.appendChild(li);
-    }
+    todoList.appendChild(li);
   });
-
-  // Llamar a las funciones para activar los oyentes de eventos
-  activateCheckboxListeners();
-  activateDeleteListeners();
-  activateEditListeners();
-  activateSaveListeners();
-  activateCancelListeners();
 }
-
-// Llamar a la función para cargar tareas al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-  loadTasks();
-  displayItems();
-  displayFooter();
-});
-
-// Agregar evento al campo de entrada para crear tareas
-document.querySelector('.new-todo').addEventListener('keyup', (event) => {
-  if (event.keyCode === 13 && document.querySelector('.new-todo').value.length > 0) {
-    const item = document.querySelector('.new-todo').value;
-    createTask(item);
-    document.querySelector('.new-todo').value = '';
-  }
-});
-
