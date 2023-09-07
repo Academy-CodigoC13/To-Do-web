@@ -275,17 +275,14 @@ function countPend(){
 
 //El sistema deber permitir MARCAR una tarea como completada
 function showComp() {
-  const completados = document.querySelectorAll('.input-controller')
+  const completados = document.querySelectorAll('.input-controller');
+
   completados.forEach((element) => {
-    const check = element.querySelector('.toggle')
-    if (!check.checked) {
-      element.style.display = 'none'
-    }
-    if (check.checked) {
-      element.style.display = ''
-    }
-  })
-  localStorage.setItem('items', JSON.stringify(itemsArray))
+    const check = element.querySelector('.toggle');
+    element.style.display = check.checked ? '' : 'none';
+  });
+
+  localStorage.setItem('items', JSON.stringify(itemsArray));
 }
 
 function borrarCompletados() {
