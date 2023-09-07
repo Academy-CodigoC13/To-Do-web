@@ -26,14 +26,23 @@ function correTiempo() {
   let hh = date.getHours()
   let mm = date.getMinutes()
   let ss = date.getSeconds()
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
 
  hh = (hh < 10) ? "0" + hh : hh
  mm = (mm < 10) ? "0" + mm : mm
  ss = (ss < 10) ? "0" + ss : ss
+ day = (day < 10) ? "0" + day : day;
+ month = (month < 10) ? "0" + month : month;
 
  let time = hh + ":" + mm + ":" + ss;
+ let dateStr = year + "-" + month + "-" + day;
  let watch = document.querySelector('#watch')
+ let dateDisplay = document.querySelector('#date-display');
  watch.innerHTML = time
+ dateDisplay.innerHTML = dateStr;
 }
 
 setInterval(correTiempo,1000);

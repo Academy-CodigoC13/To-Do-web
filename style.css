@@ -13,13 +13,20 @@ body {
   overflow: hidden;
   background: url(img/f55bc7aac8c9d893810b47a25236e2d4.jpg);
   width: 200px;
-  height: 200px;
-  color: rgb(255, 255, 255);
-  
-border-width: 6px;
+  height: 80px;
+  color: #ffffff;
+
   font-family: monospace;
-  font-size: 2.7rem;
+  font-size: 1.8rem;
 }
+
+#date-display {
+  width: 200px;
+font-size: 1.2rem;
+font-family: monospace;
+align-items: center;
+}
+
 
 button {
   margin: 0;
