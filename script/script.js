@@ -205,6 +205,33 @@ function activateEditListeners() {
     })
   })
 
+   // Constante y forEach para dejar la prioridad marcada y guardada 
+
+ const guardarPrioridad = document.querySelectorAll('#priority');
+
+ guardarPrioridad.forEach((s, i) => {
+   s.addEventListener('change', ({ target: { value } }) => {
+     itemsArray[i].priority = value;
+     localStorage.setItem('items', JSON.stringify(itemsArray));
+   });
+ });
+
+ // Funcion para separar la categoria y hacerla posible 
+
+ const selectC = document.querySelectorAll('#category');
+
+function handleCategoryChange(event, index) {
+ itemsArray[index].category = event.target.value;
+ localStorage.setItem('items', JSON.stringify(itemsArray));
+}
+
+selectC.forEach((s, i) => {
+ s.addEventListener('change', (event) => {
+   handleCategoryChange(event, i);
+ });
+});
+
+
   prioritySelects.addEventListener('change', (event) => {
     const selectedIndex = event.target.selectedIndex
     itemsArray[i].priority = event.target.options[selectedIndex].text
@@ -217,6 +244,7 @@ function activateEditListeners() {
     localStorage.setItem('items', JSON.stringify(itemsArray))
   })
 }
+
 
 // Codigo DOM #5
 // Permite que la acción guardar el nuevo nombre de la tarea cuando decides editar y que impacte el DOM del HTML, acá debes agegar algoritmo de actualizar tarea
