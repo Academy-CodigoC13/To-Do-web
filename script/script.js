@@ -275,30 +275,32 @@ function countPend(){
 
 //El sistema deber permitir MARCAR una tarea como completada
 function showComp() {
-  const completados = document.querySelectorAll('.input-controller')
+  const completados = document.querySelectorAll('.input-controller');
+
   completados.forEach((element) => {
-    const check = element.querySelector('.toggle')
-    if (!check.checked) {
-      element.style.display = 'none'
-    }
-    if (check.checked) {
-      element.style.display = ''
-    }
-  })
-  localStorage.setItem('items', JSON.stringify(itemsArray))
+    const check = element.querySelector('.toggle');
+    element.style.display = check.checked ? '' : 'none';
+  });
+
+  localStorage.setItem('items', JSON.stringify(itemsArray));
 }
 
 function borrarCompletados() {
-  const completedTasks = itemsArray.filter((item) => item.checked === false)
+  for (let i = itemsArray.length - 1; i >= 0; i--) {
+    if (itemsArray[i].checked === true) {
+      itemsArray.splice(i, 1);
+    }
+  }
 
-  localStorage.setItem('items', JSON.stringify(completedTasks))
-  location.reload()
+  localStorage.setItem('items', JSON.stringify(itemsArray));
+  location.reload();
 }
 
 function showAll(){
   const all = document.querySelectorAll('.input-controller');
   all.forEach((element) => {
     const check = element.querySelector('.toggle');
+
     element.style.display = ''
   })
 
@@ -306,17 +308,12 @@ function showAll(){
 }
 
 function showPend() {
-  const pendientes = document.querySelectorAll('.input-controller')
-  pendientes.forEach((element) => {
-    const check = element.querySelector('.toggle')
-    if (check.checked) {
-      element.style.display = 'none'
-    }
-    if (!check.checked) {
-      element.style.display = ''
-    }
-  })
-  localStorage.setItem('items', JSON.stringify(itemsArray))
+  const pendientes = document.querySelectorAll('.input-controller');
+  pendientes.forEach(element => {
+    const check = element.querySelector('.toggle');
+    element.style.display = check.checked ? 'none' : '';
+  });
+  localStorage.setItem('items', JSON.stringify(itemsArray));
 }
 
 
