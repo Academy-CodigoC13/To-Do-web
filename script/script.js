@@ -173,10 +173,11 @@ function activateDeleteListeners() {
 }
 
 function borrarItem(i) {
-
-  itemsArray.splice(i,1)
-  localStorage.setItem('items', JSON.stringify(itemsArray))
+  if (i >= 0 && i < itemsArray.length) {
+    itemsArray.splice(i, 1);
+    localStorage.setItem('items', JSON.stringify(itemsArray))
   location.reload()
+  }
 }
 
 // Codigo DOM #4
