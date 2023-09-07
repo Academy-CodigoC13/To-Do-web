@@ -232,12 +232,19 @@ function activateSaveListeners() {
   })
 }
 
-function MODIFICARitem (text,i) {
-  itemsArray[i].thing=text
-  localStorage.setItem('items', JSON.stringify(itemsArray))
-  location.reload()
+function modificarItem(text, i) {
+  if (i >= 0 && i < itemsArray.length) {
+    itemsArray[i].thing = text;
+    guardarItemsEnLocalStorage();
+  } else {
+    console.error("Índice inválido");
+  }
 }
 
+function guardarItemsEnLocalStorage() {
+  localStorage.setItem('items', JSON.stringify(itemsArray));
+  location.reload();
+}
 
 // Codigo DOM #6
 // Esta es la lógica para el botón "cancelar" cuando presionas editar una tarea, inserta este código tal cual, el reto está en saber en qué parte de tu código debes usarlo.
