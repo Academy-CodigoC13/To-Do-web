@@ -306,17 +306,12 @@ function showAll(){
 }
 
 function showPend() {
-  const pendientes = document.querySelectorAll('.input-controller')
-  pendientes.forEach((element) => {
-    const check = element.querySelector('.toggle')
-    if (check.checked) {
-      element.style.display = 'none'
-    }
-    if (!check.checked) {
-      element.style.display = ''
-    }
-  })
-  localStorage.setItem('items', JSON.stringify(itemsArray))
+  const pendientes = document.querySelectorAll('.input-controller');
+  pendientes.forEach(element => {
+    const check = element.querySelector('.toggle');
+    element.style.display = check.checked ? 'none' : '';
+  });
+  localStorage.setItem('items', JSON.stringify(itemsArray));
 }
 
 
