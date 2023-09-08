@@ -63,12 +63,14 @@ document.querySelector('.new-todo').addEventListener('keyup', (event) => {
 function displayItems() {
   let items = ''
   for (let i = 0; i < itemsArray.length; i++) {
+    const isChecked = itemsArray[i].checked ? 'checked' : '';
+    const tachadoClass = itemsArray[i].checked ? 'tachado' : '';
     items += `    <div class="item">
                     <div class="input-controller">
                       <input class="toggle" type="checkbox" id="check_${i}" ${
       itemsArray[i].checked ? 'checked' : ''
     } />
-                      <textarea disabled>${itemsArray[i].thing}</textarea>
+                      <textarea disabled class="${tachadoClass}">${itemsArray[i].thing}</textarea>
                       <div class="edit-controller">
                         <div>
                           Prioridad
@@ -164,6 +166,17 @@ function activateCheckboxListeners() {
   
       itemsArray[i].checked = ch.checked
       localStorage.setItem('items', JSON.stringify(itemsArray))
+
+const textarea = document.querySelectorAll('.input-controller textarea')[i];
+
+if (ch.checked) {
+  textarea.classList.add('tachado');
+
+} else {
+  textarea.classList.remove('tachado');
+}
+
+
     })
   })
 }
