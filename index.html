@@ -9,24 +9,30 @@
         <link rel="stylesheet"
         href="style.css" />
         <!-- Enlace con los estilos de los iconos editar y eliminar tarea  -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+      <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <title>ToDo-App</title>
 </head>
 
 <body>
+  
   <section class="todoApp">
-    <header class="header">
-      <h1>Tareas</h1>
+    <div id="watch"></div>
+     <header class="header">
+      <h1>To-Do List</h1>
       <input class="new-todo"
-             placeholder="¿Qué necesita ser hecho?"
+             placeholder="¿Que necesitas realizar?"
              autofocus />
     </header>
+    
     <section class="main">
       <ul class="todo-list"></ul>
     </section>
     <section class="footer"></section>
     <script src="script/script.js"></script>
+    
 </body>
 
 </html>
+
+<p id="date-display"></p>
